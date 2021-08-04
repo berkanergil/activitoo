@@ -1,3 +1,5 @@
+import 'package:activitoo/Constants/custom_colors.dart';
+import 'package:activitoo/Views/HomeView/HomeViewWidgets/post_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomeView extends StatefulWidget {
@@ -12,6 +14,33 @@ class _HomeViewState extends State<HomeView> {
       color: Colors.white,
       child: Column(
         children: [
+          PostWidget(onTap: (){},
+              categoryImage: 'https://picsum.photos/200/300',
+              categoryName: 'categoryName',
+              categoryEventNumber: '12',
+              categoryColor: CustomColor.red,
+              eventImage: 'https://picsum.photos/200/300',
+              eventTitle: 'eventTitle',
+              eventStartTime: 'eventStartTime',
+              eventStartDate: 'eventStartDate',
+              placeName: 'placeName',
+              regionName: 'regionName',
+              barChildren: [
+                PostBarTile(icon: Icon(
+                    Icons.location_on_outlined,
+                    color: Colors.white,
+                    size: 26.0,
+                    ),
+                    text: Text(
+                      'regionName',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                    onTap: (){}),
+              ]
+      ),
           ElevatedButton(onPressed: (){}, child: Text(AppLocalizations.of(context)!.helloWorld)),
           ElevatedButton(onPressed: (){}, child: Text('data')),
           ElevatedButton(onPressed: (){}, child: Text('data')),

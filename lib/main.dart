@@ -2,7 +2,7 @@ import 'package:activitoo/Constants/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'Views/HomeView/home_view.dart';
 
 void main() {
