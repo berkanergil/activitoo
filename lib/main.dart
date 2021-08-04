@@ -1,4 +1,7 @@
+import 'package:activitoo/Constants/custom_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'Views/HomeView/home_view.dart';
 
@@ -12,6 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''), // English, no country code
+        Locale('tr', ''), // Spanish, no country code
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -22,7 +35,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(primary: CustomColor.red)),
+        buttonColor: Colors.blue,
+        primaryColor: Colors.black,
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'DENEME'),
     );
@@ -67,14 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _screenOptions[pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Discussions',
+            label: 'deneme',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Tasks',
+            label: AppLocalizations.of(context)!.helloWorld,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
@@ -85,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Finished',
           ),
         ],
-        selectedItemColor: Theme.of(context).accentColor,
+        selectedItemColor: CustomColor.red,
         currentIndex: pageIndex,
         onTap: (index) {
           setState(() {
