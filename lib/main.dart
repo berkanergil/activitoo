@@ -1,8 +1,11 @@
 import 'package:activitoo/Constants/custom_colors.dart';
+import 'package:activitoo/Controllers/admin_controller.dart';
+import 'package:activitoo/Models/admin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'Models/api_response_model.dart';
 import 'Views/HomeView/home_view.dart';
 
 void main() {
@@ -26,15 +29,6 @@ class MyApp extends StatelessWidget {
         Locale('tr', ''), // Spanish, no country code
       ],
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(primary: CustomColor.red)),
         buttonColor: Colors.blue,
         primaryColor: Colors.black,
@@ -48,15 +42,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -64,6 +49,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  bool _isLoading= false;
+  late APIResponseModel<List<AdminModel>> _apiResponse;
+
+  _getAdmins() async {
+    setState(() {
+      _isLoading = true;
+    });
+    _apiResponse = await AdminController.index();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+
   int pageIndex = 0;
 
   static List<Widget> _screenOptions = <Widget>[
@@ -80,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("ToDo"),
         centerTitle: true,
       ),
-      body: _screenOptions[pageIndex],
+      body:
+      _screenOptions[pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
@@ -103,7 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         selectedItemColor: CustomColor.red,
         currentIndex: pageIndex,
-        onTap: (index) {
+        onTap: (index) async{
+          await _getAdmins();
           setState(() {
             pageIndex = index;
           });
