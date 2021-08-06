@@ -1,9 +1,9 @@
 class AdminModel {
-  int? id;
-  int? actorId;
+  String? id;
+  String? actorId;
   String? createdAt;
   String? updatedAt;
-  int? rightId;
+  String? rightId;
   String? username;
   String? name;
   String? surname;
