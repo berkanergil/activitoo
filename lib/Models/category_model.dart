@@ -1,20 +1,21 @@
 class CategoryModel {
-  int? id;
-  String? name;
-  String? description;
-  String? color;
-  String? image;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late String name;
+  late String description;
+  late String color;
+  late String image;
+  late String createdAt;
+  late String updatedAt;
 
   CategoryModel(
-      {this.id,
-        this.name,
-        this.description,
-        this.color,
-        this.image,
-        this.createdAt,
-        this.updatedAt});
+      {
+        required this.id,
+        required this.name,
+        required this.description,
+        required this.color,
+        required this.image,
+        required this.createdAt,
+        required this.updatedAt});
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

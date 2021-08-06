@@ -1,34 +1,25 @@
 import 'package:activitoo/Constants/custom_colors.dart';
+import 'package:activitoo/Models/admin_model.dart';
+import 'package:activitoo/Models/category_model.dart';
+import 'package:activitoo/Models/event_model.dart';
+import 'package:activitoo/Models/place_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostWidget extends StatefulWidget {
 
-  VoidCallback onTap;
-  var categoryImage;
-  var categoryName;
-  var categoryEventNumber;
-  Color categoryColor;
-  var eventImage;
-  var eventTitle;
-  var eventStartTime;
-  var eventStartDate;
-  var placeName;
-  var regionName;
-  List<Widget> barChildren;
+  EventModel eventModel;
+  CategoryModel categoryModel;
+  PlaceModel placeModel;
+  List<Widget> barChildrenLeft;
+  List<Widget> barChildrenRight;
   PostWidget({
-    required this.onTap,
-    required this.categoryImage,
-    required this.categoryName,
-    required this.categoryEventNumber,
-    required this.categoryColor,
-    required this.eventImage,
-    required this.eventTitle,
-    required this.eventStartTime,
-    required this.eventStartDate,
-    required this.placeName,
-    required this.regionName,
-    required this.barChildren,
+    required this.barChildrenLeft,
+    required this.barChildrenRight,
+    required this.eventModel,
+    required this.categoryModel,
+    required this.placeModel,
 }
 );
   @override
@@ -45,7 +36,7 @@ class _PostWidgetState extends State<PostWidget> {
           children: [
             Material(
               child: InkWell(
-                onTap: widget.onTap,
+                onTap: (){},
                 child: Stack(
                   children: <Widget>[
                     ClipRRect(
@@ -76,7 +67,7 @@ class _PostWidgetState extends State<PostWidget> {
                             ),
                             image: DecorationImage(
                               image: new NetworkImage(
-                                  widget.eventImage),
+                                  widget.eventModel.image),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -97,15 +88,15 @@ class _PostWidgetState extends State<PostWidget> {
                               children: [
                                 CircleAvatar(
                                   radius: 18.0,
-                                  backgroundColor:
-                                  widget.categoryColor,
+                                  backgroundColor: Color(int.parse("0xFF" +
+                                      widget.categoryModel.color)),
                                   child: CircleAvatar(
                                     radius: 16.0,
                                     backgroundColor: Colors.white,
                                     child: CircleAvatar(
                                       radius: 15.0,
                                       backgroundImage: NetworkImage(
-                                          widget.categoryImage),
+                                          widget.categoryModel.image),
                                       backgroundColor: Colors.transparent,
                                     ),
                                   ),
@@ -115,14 +106,14 @@ class _PostWidgetState extends State<PostWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      widget.categoryName,
+                                      widget.categoryModel.name,
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
                                     Text(
-                                      widget.categoryEventNumber + ' events',
+                                      'widget.categoryEventNumber' + ' events',
                                       style: TextStyle(
                                           fontSize: 14, color: Colors.white),
                                     ),
@@ -132,15 +123,15 @@ class _PostWidgetState extends State<PostWidget> {
                             ),
                             CircleAvatar(
                               radius: 18.0,
-                              backgroundColor:
-                              widget.categoryColor,
+                              backgroundColor: Color(int.parse("0xFF" +
+                                  widget.categoryModel.color)),
                               child: CircleAvatar(
                                 radius: 16.0,
                                 backgroundColor: Colors.white,
                                 child: CircleAvatar(
                                   radius: 15.0,
                                   backgroundImage: NetworkImage(
-                                      widget.categoryImage),
+                                      widget.categoryModel.image),
                                   backgroundColor: Colors.transparent,
                                 ),
                               ),
@@ -158,7 +149,7 @@ class _PostWidgetState extends State<PostWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              widget.eventTitle,
+                              widget.eventModel.title,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: TextStyle(
@@ -167,7 +158,7 @@ class _PostWidgetState extends State<PostWidget> {
                                   color: Colors.white),
                             ),
                             Text(
-                              widget.placeName,
+                              widget.placeModel.name,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: TextStyle(
@@ -188,7 +179,7 @@ class _PostWidgetState extends State<PostWidget> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              widget.eventStartTime,
+                              widget.eventModel.startDateTime,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 20,
@@ -196,7 +187,7 @@ class _PostWidgetState extends State<PostWidget> {
                                   color: Colors.white),
                             ),
                             Text(
-                              widget.eventStartDate,
+                              widget.eventModel.endDateTime,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 18,
@@ -213,13 +204,22 @@ class _PostWidgetState extends State<PostWidget> {
             ),
             Container(
               decoration: BoxDecoration(
-                color: widget.categoryColor
+                color: Color(int.parse("0xFF" + widget.categoryModel.color))
               ),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(4.0, 6, 4.0, 6),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children:widget.barChildren,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: widget.barChildrenLeft,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: widget.barChildrenRight,
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -1,28 +1,30 @@
 class EventModel {
-  int? id;
-  int? placeId;
-  int? categoryId;
-  String? title;
-  String? description;
-  String? image;
-  int? price;
-  String? startDateTime;
-  String? endDateTime;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late int placeId;
+  late int categoryId;
+  late String title;
+  late String description;
+  late String image;
+  late int price;
+  late String startDateTime;
+  late String endDateTime;
+  late String createdAt;
+  late String updatedAt;
 
   EventModel(
-      {this.id,
-        this.placeId,
-        this.categoryId,
-        this.title,
-        this.description,
-        this.image,
-        this.price,
-        this.startDateTime,
-        this.endDateTime,
-        this.createdAt,
-        this.updatedAt});
+      {
+        required this.id,
+        required this.placeId,
+        required this.categoryId,
+        required this.title,
+        required this.description,
+        required this.image,
+        required this.price,
+        required this.startDateTime,
+        required this.endDateTime,
+        required this.createdAt,
+        required this.updatedAt
+      });
 
   EventModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

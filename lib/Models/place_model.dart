@@ -1,36 +1,37 @@
 class PlaceModel {
-  int? id;
-  int? actorId;
-  int? regionId;
-  String? name;
-  String? image;
-  String? bImage;
-  String? msisdn;
-  String? email;
-  String? description;
-  int? starCount;
-  String? address;
-  String? lon;
-  String? lat;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late int actorId;
+  late int regionId;
+  late String name;
+  late String image;
+  late String bImage;
+  late String msisdn;
+  late String email;
+  late String description;
+  late int starCount;
+  late String address;
+  late String lon;
+  late String lat;
+  late String createdAt;
+  late String updatedAt;
 
   PlaceModel(
-      {this.id,
-        this.actorId,
-        this.regionId,
-        this.name,
-        this.image,
-        this.bImage,
-        this.msisdn,
-        this.email,
-        this.description,
-        this.starCount,
-        this.address,
-        this.lon,
-        this.lat,
-        this.createdAt,
-        this.updatedAt});
+      {
+        required this.id,
+        required this.actorId,
+        required this.regionId,
+        required this.name,
+        required this.image,
+        required this.bImage,
+        required this.msisdn,
+        required this.email,
+        required this.description,
+        required this.starCount,
+        required this.address,
+        required this.lon,
+        required this.lat,
+        required this.createdAt,
+        required this.updatedAt});
 
   PlaceModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
