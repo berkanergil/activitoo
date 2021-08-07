@@ -2,5 +2,7 @@
     "helloWorld": "Hello World!",
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
-    }
+    },
+    "anonymousSentenceOne": "Anonymous Ninja and ...",
+    "anonymousSentenceTwo": "Anonymous person\n\nEveryone seems to be shy today join and take part :)"
 }
