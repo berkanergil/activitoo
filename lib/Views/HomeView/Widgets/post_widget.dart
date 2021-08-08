@@ -3,6 +3,7 @@ import 'package:activitoo/Models/admin_model.dart';
 import 'package:activitoo/Models/category_model.dart';
 import 'package:activitoo/Models/event_model.dart';
 import 'package:activitoo/Models/place_model.dart';
+import 'package:activitoo/Views/CommonWidgets/popup_menu_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -86,39 +87,44 @@ class _PostWidgetState extends State<PostWidget> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  radius: 18.0,
-                                  backgroundColor: Color(int.parse("0xFF" +
-                                      widget.categoryModel.color)),
-                                  child: CircleAvatar(
-                                    radius: 16.0,
-                                    backgroundColor: Colors.white,
-                                    child: CircleAvatar(
-                                      radius: 15.0,
-                                      backgroundImage: NetworkImage(
-                                          widget.categoryModel.image),
-                                      backgroundColor: Colors.transparent,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 10,),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                Row(
                                   children: [
-                                    Text(
-                                      widget.categoryModel.name,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                    CircleAvatar(
+                                      radius: 18.0,
+                                      backgroundColor: Color(int.parse("0xFF" +
+                                          widget.categoryModel.color)),
+                                      child: CircleAvatar(
+                                        radius: 16.0,
+                                        backgroundColor: Colors.white,
+                                        child: CircleAvatar(
+                                          radius: 15.0,
+                                          backgroundImage: NetworkImage(
+                                              widget.categoryModel.image),
+                                          backgroundColor: Colors.transparent,
+                                        ),
+                                      ),
                                     ),
-                                    Text(
-                                      'widget.categoryEventNumber' + ' events',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.white),
+                                    SizedBox(width: 10,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          widget.categoryModel.name,
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          'widget.categoryEventNumber' + ' events',
+                                          style: TextStyle(
+                                              fontSize: 14, color: Colors.white),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
+                                PopupMenuWidgetPost(),
                               ],
                             ),
                             CircleAvatar(
