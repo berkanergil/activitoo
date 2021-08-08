@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// TODO: Localization
+
 class ReportAlertDialog extends StatefulWidget {
   @override
   _ReportAlertDialogState createState() => new _ReportAlertDialogState();
