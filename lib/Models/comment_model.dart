@@ -1,29 +1,29 @@
 class CommentModel {
-  int? id;
-  int? placeId;
-  int? actorId;
-  String? content;
-  int? starCount;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late int placeId;
+  late int actorId;
+  late String content;
+  late int starCount;
+  late String createdAt;
+  late String updatedAt;
 
   CommentModel(
-      {this.id,
-        this.placeId,
-        this.actorId,
-        this.content,
-        this.starCount,
-        this.createdAt,
-        this.updatedAt});
+      {required this.id,
+        required this.placeId,
+        required this.actorId,
+        required this.content,
+        required this.starCount,
+        required this.createdAt,
+        required this.updatedAt});
 
   CommentModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    placeId = json['place_id'];
-    actorId = json['actor_id'];
-    content = json['content'];
-    starCount = json['star_count'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = json['id']??0;
+    placeId = json['place_id']??0;
+    actorId = json['actor_id']??0;
+    content = json['content']??"";
+    starCount = json['star_count']??0;
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {

@@ -1,47 +1,47 @@
 class ManagerModel {
-  int? id;
-  int? actorId;
-  String? createdAt;
-  String? updatedAt;
-  int? rightId;
-  String? username;
-  String? name;
-  String? surname;
-  String? email;
-  String? apiToken;
-  String? rememberToken;
-  String? password;
-  String? msisdn;
+  late int id;
+  late int actorId;
+  late String createdAt;
+  late String updatedAt;
+  late int rightId;
+  late String username;
+  late String name;
+  late String surname;
+  late String email;
+  late String apiToken;
+  late String rememberToken;
+  late String password;
+  late String msisdn;
 
   ManagerModel(
-      {this.id,
-        this.actorId,
-        this.createdAt,
-        this.updatedAt,
-        this.rightId,
-        this.username,
-        this.name,
-        this.surname,
-        this.email,
-        this.apiToken,
-        this.rememberToken,
-        this.password,
-        this.msisdn});
+      {required this.id,
+        required this.actorId,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.rightId,
+        required this.username,
+        required this.name,
+        required this.surname,
+        required this.email,
+        required this.apiToken,
+        required this.rememberToken,
+        required this.password,
+        required this.msisdn});
 
   ManagerModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    actorId = json['actor_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    rightId = json['right_id'];
-    username = json['username'];
-    name = json['name'];
-    surname = json['surname'];
-    email = json['email'];
-    apiToken = json['api_token'];
-    rememberToken = json['remember_token'];
-    password = json['password'];
-    msisdn = json['msisdn'];
+    id = json['id']??0;
+    actorId = json['actor_id']??0;
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
+    rightId = json['right_id']??0;
+    username = json['username']??"";
+    name = json['name']??"";
+    surname = json['surname']??"";
+    email = json['email']??"";
+    apiToken = json['api_token']??"";
+    rememberToken = json['remember_token']??"";
+    password = json['password']??"";
+    msisdn = json['msisdn']??"";
   }
 
   Map<String, dynamic> toJson() {

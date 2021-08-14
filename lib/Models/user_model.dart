@@ -1,65 +1,65 @@
 class UserModel {
-  int? id;
-  int? actorId;
-  String? image;
-  String? description;
-  String? sex;
-  String? dob;
-  int? anonStatus;
-  int? secretStatus;
-  String? createdAt;
-  String? updatedAt;
-  int? rightId;
-  String? username;
-  String? name;
-  String? surname;
-  String? email;
-  String? apiToken;
-  String? rememberToken;
-  String? password;
-  String? msisdn;
+  late int id;
+  late int actorId;
+  late String image;
+  late String description;
+  late String sex;
+  late String dob;
+  late int anonStatus;
+  late int secretStatus;
+  late String createdAt;
+  late String updatedAt;
+  late int rightId;
+  late String username;
+  late String name;
+  late String surname;
+  late String email;
+  late String apiToken;
+  late String rememberToken;
+  late String password;
+  late String msisdn;
 
   UserModel(
-      {this.id,
-        this.actorId,
-        this.image,
-        this.description,
-        this.sex,
-        this.dob,
-        this.anonStatus,
-        this.secretStatus,
-        this.createdAt,
-        this.updatedAt,
-        this.rightId,
-        this.username,
-        this.name,
-        this.surname,
-        this.email,
-        this.apiToken,
-        this.rememberToken,
-        this.password,
-        this.msisdn});
+      {required this.id,
+        required this.actorId,
+        required this.image,
+        required this.description,
+        required this.sex,
+        required this.dob,
+        required this.anonStatus,
+        required this.secretStatus,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.rightId,
+        required this.username,
+        required this.name,
+        required this.surname,
+        required this.email,
+        required this.apiToken,
+        required this.rememberToken,
+        required this.password,
+        required this.msisdn});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    actorId = json['actor_id'];
-    image = json['image'];
-    description = json['description'];
-    sex = json['sex'];
-    dob = json['dob'];
-    anonStatus = json['anon_status'];
-    secretStatus = json['secret_status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    rightId = json['right_id'];
-    username = json['username'];
-    name = json['name'];
-    surname = json['surname'];
-    email = json['email'];
-    apiToken = json['api_token'];
-    rememberToken = json['remember_token'];
-    password = json['password'];
-    msisdn = json['msisdn'];
+    id = json['id']??0;
+    actorId = json['actor_id']??0;
+    image = json['image']??"";
+    description = json['description']??"";
+    sex = json['sex']??"";
+    dob = json['dob']??"";
+    anonStatus = json['anon_status']??0;
+    secretStatus = json['secret_status']??0;
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
+    rightId = json['right_id']??0;
+    username = json['username']??"";
+    name = json['name']??"";
+    surname = json['surname']??"";
+    email = json['email']??"";
+    apiToken = json['api_token']??"";
+    rememberToken = json['remember_token']??"";
+    password = json['password']??"";
+    msisdn = json['msisdn']??"";
   }
 
   Map<String, dynamic> toJson() {

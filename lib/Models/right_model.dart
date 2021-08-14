@@ -1,16 +1,16 @@
 class RightModel {
-  int? id;
-  String? name;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late String name;
+  late String createdAt;
+  late String updatedAt;
 
-  RightModel({this.id, this.name, this.createdAt, this.updatedAt});
+  RightModel({required this.id, required this.name, required this.createdAt,required this.updatedAt});
 
   RightModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = json['id']??0;
+    name = json['name']??"";
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {

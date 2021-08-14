@@ -1,16 +1,16 @@
 class RegionModel {
-  int? id;
-  String? name;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late String name;
+  late String createdAt;
+  late String updatedAt;
 
-  RegionModel({this.id, this.name, this.createdAt, this.updatedAt});
+  RegionModel({required this.id, required this.name, required this.createdAt, required this.updatedAt});
 
   RegionModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = json['id']??0;
+    name = json['name']??"";
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {

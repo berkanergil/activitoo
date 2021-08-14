@@ -16,8 +16,7 @@ class PlaceModel {
   late String updatedAt;
 
   PlaceModel(
-      {
-        required this.id,
+      {required this.id,
         required this.actorId,
         required this.regionId,
         required this.name,
@@ -34,21 +33,21 @@ class PlaceModel {
         required this.updatedAt});
 
   PlaceModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    actorId = json['actor_id'];
-    regionId = json['region_id'];
-    name = json['name'];
-    image = json['image'];
-    bImage = json['b_image'];
-    msisdn = json['msisdn'];
-    email = json['email'];
-    description = json['description'];
-    starCount = json['star_count'];
-    address = json['address'];
-    lon = json['lon'];
-    lat = json['lat'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = json['id']??0;
+    actorId = json['actor_id']??0;
+    regionId = json['region_id']??0;
+    name = json['name']??"";
+    image = json['image']??"";
+    bImage = json['b_image']??"";
+    msisdn = json['msisdn']??"";
+    email = json['email']??"";
+    description = json['description']??"";
+    starCount = json['star_count']??0;
+    address = json['address']??"";
+    lon = json['lon']??"";
+    lat = json['lat']??"";
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {

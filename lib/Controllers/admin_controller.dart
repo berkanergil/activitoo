@@ -20,14 +20,14 @@ class AdminController {
           items.add(AdminModel.fromJson(item));
         }
         return APIResponseModel<List<AdminModel>>(
-            data: items, error: jsonData["error"]);
+            data: items, error: jsonData["error"],message:jsonData["message"] );
       }
       return APIResponseModel<List<AdminModel>>(
-          error: true, message: "An error occurred");
+          error: true,data: [], message: "An error occurred");
     }).catchError((error) {
       print(error.toString());
       return APIResponseModel<List<AdminModel>>(
-          error: true, message: error.toString());
+          error: true,data: [], message: error.toString());
     });
   }
 
