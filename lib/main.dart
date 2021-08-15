@@ -1,4 +1,5 @@
 import 'package:activitoo/Constants/custom_colors.dart';
+import 'package:activitoo/Views/PostDetailedView/post_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static List<Widget> _screenOptions = <Widget>[
     HomeView(),
-    HomeView(),
+    PostView(),
     HomeView(),
     HomeView()
   ];
