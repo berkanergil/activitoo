@@ -67,7 +67,6 @@ class WidgetController {
       return APIResponseModel<List<HomeViewPostWidgetModel>>(
           error: true, message: "An error occurred");
     }).catchError((error) {
-      print(error.toString());
       return APIResponseModel<List<HomeViewPostWidgetModel>>(
           error: true, message: error.toString());
     });

@@ -70,9 +70,11 @@ class _HomeViewState extends State<HomeView> {
 
   void callWidgets() async {
     apiResponseModel = await WidgetController.homeViewPostWidgets();
-    // apiResponseModel.data?.forEach((element) {
-    //   print(element.categoryModel.eventCount);
-    // });
+    print(apiResponseModel.error);
+    print(apiResponseModel.message);
+    apiResponseModel.data?.forEach((element) {
+      print(element.categoryModel.eventCount);
+    });
 
     // apiResponseModel = await WidgetController.homeViewDrawerWidget();
     // apiResponseModel.data?.regions.forEach((element) {print(element.name);});
