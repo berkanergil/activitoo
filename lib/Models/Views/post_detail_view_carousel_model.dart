@@ -6,13 +6,13 @@ import 'package:activitoo/Models/region_model.dart';
 import 'package:activitoo/Models/sort_model.dart';
 import 'package:activitoo/Models/user_model.dart';
 
-class PostDetailViewPostModel {
+class PostDetailViewCarouselModel {
   late EventModel eventModel;
   late PlaceModel placeModel;
   late CategoryModel categoryModel;
-  late List<ArtistModel> performers;
+  late RegionModel regionModel;
   late List<UserModel> users;
   late List<ArtistModel> artists;
 
-  PostDetailViewPostModel({required this.eventModel,required this.placeModel,required this.categoryModel,required this.performers,required this.users,required this.artists});
+  PostDetailViewCarouselModel({required this.eventModel,required this.placeModel,required this.regionModel,required this.categoryModel,required this.users,required this.artists});
 }

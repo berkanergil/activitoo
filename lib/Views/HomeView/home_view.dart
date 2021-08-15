@@ -17,6 +17,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   late APIResponseModel<List<HomeViewPostWidgetModel>> homeViewPostWidgetModel;
   late bool isLoadingHomeViewPostWidgetModel;
+
   late APIResponseModel<HomeViewDrawerWidgetModel> homeViewDrawerWidgetModel;
   late bool isLoadingHomeViewDrawerWidgetModel;
 

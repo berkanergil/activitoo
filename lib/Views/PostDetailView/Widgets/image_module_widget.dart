@@ -1,5 +1,5 @@
 import 'package:activitoo/Views/CommonWidgets/custom_tooltip_widget.dart';
-import 'package:activitoo/Views/PostDetailedView/AlertDialogs/ask_anon_widget.dart';
+import 'package:activitoo/Views/PostDetailView/AlertDialogs/ask_anon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

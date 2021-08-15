@@ -14,6 +14,7 @@ class PlaceModel {
   late String lat;
   late String createdAt;
   late String updatedAt;
+  int? eventCount;
 
   PlaceModel(
       {required this.id,
@@ -30,7 +31,9 @@ class PlaceModel {
         required this.lon,
         required this.lat,
         required this.createdAt,
-        required this.updatedAt});
+        required this.updatedAt,
+        this.eventCount
+      });
 
   PlaceModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
@@ -48,6 +51,7 @@ class PlaceModel {
     lat = json['lat']??"";
     createdAt = json['created_at']??"";
     updatedAt = json['updated_at']??"";
+    eventCount = json["event_count"]??0;
   }
 
   Map<String, dynamic> toJson() {
