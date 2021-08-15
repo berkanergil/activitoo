@@ -1,24 +1,24 @@
-class MessageModel {
+class ParticipantModel {
   late int id;
-  late int senderId;
-  late int receiverId;
-  late String content;
+  late int eventId;
+  late int actorId;
+  late int anonStatus;
   late String createdAt;
   late String updatedAt;
 
-  MessageModel(
+  ParticipantModel(
       {required this.id,
-        required this.senderId,
-        required this.receiverId,
-        required this.content,
+        required this.eventId,
+        required this.actorId,
+        required this.anonStatus,
         required this.createdAt,
         required this.updatedAt});
 
-  MessageModel.fromJson(Map<String, dynamic> json) {
+  ParticipantModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
-    senderId = json['sender_id']??0;
-    receiverId = json['receiver_id']??0;
-    content = json['content']??"";
+    eventId = json['event_id']??0;
+    actorId = json['actor_id']??0;
+    anonStatus = json['anon_status']??0;
     createdAt = json['created_at']??"";
     updatedAt = json['updated_at']??"";
   }
@@ -26,9 +26,9 @@ class MessageModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['sender_id'] = this.senderId;
-    data['receiver_id'] = this.receiverId;
-    data['content'] = this.content;
+    data['event_id'] = this.eventId;
+    data['actor_id'] = this.actorId;
+    data['anon_status'] = this.anonStatus;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;

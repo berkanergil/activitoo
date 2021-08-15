@@ -1,12 +1,12 @@
-class RegionModel {
+class SortModel {
   late int id;
   late String name;
   late String createdAt;
   late String updatedAt;
 
-  RegionModel({required this.id, required this.name, required this.createdAt, required this.updatedAt});
+  SortModel({required this.id, required this.name, required this.createdAt, required this.updatedAt});
 
-  RegionModel.fromJson(Map<String, dynamic> json) {
+  SortModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
     name = json['name']??"";
     createdAt = json['created_at']??"";

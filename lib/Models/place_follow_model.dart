@@ -1,24 +1,17 @@
-class FollowModel {
+class PlaceFollowModel {
   late int id;
   late int followerId;
-  late int followedId;
-  late int followStatus;
+  late int placeId;
   late String createdAt;
   late String updatedAt;
 
-  FollowModel(
-      {required this.id,
-        required this.followerId,
-        required this.followedId,
-        required this.followStatus,
-        required this.createdAt,
-        required this.updatedAt});
+  PlaceFollowModel(
+      {required this.id, required this.followerId, required this.placeId, required this.createdAt, required this.updatedAt});
 
-  FollowModel.fromJson(Map<String, dynamic> json) {
+  PlaceFollowModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
     followerId = json['follower_id']??0;
-    followedId = json['followed_id']??0;
-    followStatus = json['follow_status']??0;
+    placeId = json['place_id']??0;
     createdAt = json['created_at']??"";
     updatedAt = json['updated_at']??"";
   }
@@ -27,8 +20,7 @@ class FollowModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['follower_id'] = this.followerId;
-    data['followed_id'] = this.followedId;
-    data['follow_status'] = this.followStatus;
+    data['place_id'] = this.placeId;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;

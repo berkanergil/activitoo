@@ -1,26 +1,26 @@
 class PerformModel {
-  int? id;
-  int? eventId;
-  int? actorId;
-  int? acceptStatus;
-  String? createdAt;
-  String? updatedAt;
+  late int id;
+  late int eventId;
+  late int actorId;
+  late int acceptStatus;
+  late String createdAt;
+  late String updatedAt;
 
   PerformModel(
-      {this.id,
-        this.eventId,
-        this.actorId,
-        this.acceptStatus,
-        this.createdAt,
-        this.updatedAt});
+      {required this.id,
+        required this.eventId,
+        required this.actorId,
+        required this.acceptStatus,
+        required this.createdAt,
+        required this.updatedAt});
 
   PerformModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    eventId = json['event_id'];
-    actorId = json['actor_id'];
-    acceptStatus = json['accept_status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = json['id']??0;
+    eventId = json['event_id']??0;
+    actorId = json['actor_id']??0;
+    acceptStatus = json['accept_status']??0;
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {
