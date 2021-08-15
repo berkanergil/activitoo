@@ -15,68 +15,61 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late APIResponseModel<List<HomeViewPostWidgetModel>> apiResponseModel;
-  //  late APIResponseModel<HomeViewDrawerWidgetModel> apiResponseModel;
+  late APIResponseModel<List<HomeViewPostWidgetModel>> homeViewPostWidgetModel;
+  late bool isLoadingHomeViewPostWidgetModel;
+  late APIResponseModel<HomeViewDrawerWidgetModel> homeViewDrawerWidgetModel;
+  late bool isLoadingHomeViewDrawerWidgetModel;
+
 
   @override
   void initState() {
     // TODO: implement initState
-    callWidgets();
     super.initState();
+    callHomeViewDrawerWidgetModel();
+    callHomeViewPostWidgetModel();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            //     PostWidget(onTap: (){},
-            //         categoryImage: 'https://picsum.photos/200/300',
-            //         categoryName: 'categoryName',
-            //         categoryEventNumber: '12',
-            //         categoryColor: CustomColor.red,
-            //         eventImage: 'https://picsum.photos/200/300',
-            //         eventTitle: 'eventTitle',
-            //         eventStartTime: 'eventStartTime',
-            //         eventStartDate: 'eventStartDate',
-            //         placeName: 'placeName',
-            //         regionName: 'regionName',
-            //         barChildren: [
-            //           PostBarTile(icon: Icon(
-            //               Icons.location_on_outlined,
-            //               color: Colors.white,
-            //               size: 26.0,
-            //               ),
-            //               text: Text(
-            //                 'regionName',
-            //                 style: TextStyle(
-            //                     fontSize: 14,
-            //                     fontWeight: FontWeight.w500,
-            //                     color: Colors.white),
-            //               ),
-            //               onTap: (){}),
-            //         ]
-            // ),
-            ElevatedButton(
-                onPressed: () {},
-                child: Text(AppLocalizations.of(context)!.helloWorld)),
-            ElevatedButton(onPressed: () {}, child: Text('data')),
-            ElevatedButton(onPressed: () {}, child: Text('data')),
-            ElevatedButton(onPressed: () {}, child: Text('data'))
-          ],
-        ));
+    return Scaffold(
+      drawer: isLoadingHomeViewDrawerWidgetModel?CircularProgressIndicator():
+      getHomeViewDrawerWidgetModel(homeViewDrawerWidgetModel),
+      body: isLoadingHomeViewPostWidgetModel?CircularProgressIndicator():
+      getHomeViewPostWidgetModel(homeViewPostWidgetModel),
+    );
   }
 
-  void callWidgets() async {
-    apiResponseModel = await WidgetController.homeViewPostWidgets();
-    print(apiResponseModel.error);
-    print(apiResponseModel.message);
-    apiResponseModel.data?.forEach((element) {
-      print(element.categoryModel.eventCount);
+  void callHomeViewPostWidgetModel() async {
+    setState(() {
+      isLoadingHomeViewPostWidgetModel=true;
     });
+    homeViewPostWidgetModel = await WidgetController.homeViewPostWidgets();
+    setState(() {
+      isLoadingHomeViewPostWidgetModel=false;
+    });
+  }
 
-    // apiResponseModel = await WidgetController.homeViewDrawerWidget();
-    // apiResponseModel.data?.regions.forEach((element) {print(element.name);});
+  Widget getHomeViewPostWidgetModel(APIResponseModel<List<HomeViewPostWidgetModel>> homeViewPostWidgetModel) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: homeViewPostWidgetModel.data!.map((e) => Text(e.placeModel.name)).toList(),
+    );
+  }
+
+  void callHomeViewDrawerWidgetModel() async {
+    setState(() {
+      isLoadingHomeViewDrawerWidgetModel=true;
+    });
+    homeViewDrawerWidgetModel = await WidgetController.homeViewDrawerWidget();
+    setState(() {
+      isLoadingHomeViewDrawerWidgetModel=false;
+    });
+  }
+
+  Widget getHomeViewDrawerWidgetModel(APIResponseModel<HomeViewDrawerWidgetModel> homeViewDrawerWidgetModel) {
+    return Drawer(
+      child: Text(homeViewDrawerWidgetModel.data!.regions[0].name),
+    );
   }
 }
