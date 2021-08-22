@@ -17,6 +17,7 @@ class ArtistModel {
   late String rememberToken;
   late String password;
   late String msisdn;
+  int? eventCount;
 
   ArtistModel(
       {required this.id,
@@ -36,7 +37,9 @@ class ArtistModel {
         required this.apiToken,
         required this.rememberToken,
         required this.password,
-        required this.msisdn});
+        required this.msisdn,
+        this.eventCount
+      });
 
   ArtistModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
@@ -57,6 +60,7 @@ class ArtistModel {
     rememberToken = json['remember_token']??"";
     password = json['password']??"";
     msisdn = json['msisdn']??"";
+    eventCount = json["event_count"]??0;
   }
 
   Map<String, dynamic> toJson() {

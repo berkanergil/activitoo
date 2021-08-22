@@ -18,6 +18,7 @@ class UserModel {
   late String rememberToken;
   late String password;
   late String msisdn;
+  int? eventAnonStatus;
 
   UserModel(
       {required this.id,
@@ -38,7 +39,9 @@ class UserModel {
         required this.apiToken,
         required this.rememberToken,
         required this.password,
-        required this.msisdn});
+        required this.msisdn,
+        this.eventAnonStatus
+      });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
@@ -60,6 +63,7 @@ class UserModel {
     rememberToken = json['remember_token']??"";
     password = json['password']??"";
     msisdn = json['msisdn']??"";
+    eventAnonStatus = json['event_anon_status']??0;
   }
 
   Map<String, dynamic> toJson() {

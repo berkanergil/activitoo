@@ -10,8 +10,9 @@ class PostDetailViewPostModel {
   late EventModel eventModel;
   late PlaceModel placeModel;
   late CategoryModel categoryModel;
+  late List<ArtistModel> performers;
   late List<UserModel> users;
   late List<ArtistModel> artists;
 
-  PostDetailViewPostModel({required this.eventModel,required this.placeModel,required this.categoryModel,required this.users,required this.artists});
+  PostDetailViewPostModel({required this.eventModel,required this.placeModel,required this.categoryModel,required this.performers,required this.users,required this.artists});
 }
