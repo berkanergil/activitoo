@@ -91,9 +91,13 @@ class _HomeViewState extends State<HomeView> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: listHomeViewPostWidgets
-              .map((e) => Image(image: NetworkImage(Config.eventImageUrl+e.eventModel.image),
-                  
-                  ))
+              .map((e) => PostWidget(
+              barChildrenLeft: [],
+              barChildrenRight: [],
+              eventModel: e.eventModel,
+              categoryModel: e.categoryModel,
+              placeModel: e.placeModel
+          ))
               .toList(),
         ),
       ),

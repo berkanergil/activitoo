@@ -34,17 +34,16 @@ class _PostDetailViewState extends State<PostDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("hey"),);
-    // return Container(
-    //   height: MediaQuery.of(context).size.height,
-    //     child: ListView(shrinkWrap: true, children: [
-    //       ImageModuleWidget(),
-    //       DescriptionModuleWidget(),
-    //       PlaceModuleWidget(),
-    //       ArtistModuleWidget(),
-    //       CarouselModuleWidget()
-    //     ]),
-    // );
+    return Container(
+      height: MediaQuery.of(context).size.height,
+        child: ListView(shrinkWrap: true, children: [
+          ImageModuleWidget(),
+          DescriptionModuleWidget(),
+          PlaceModuleWidget(),
+          ArtistModuleWidget(),
+          CarouselModuleWidget()
+        ]),
+    );
   }
 
   void callPostDetailViewPostModel() async{
