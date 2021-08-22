@@ -68,8 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int pageIndex = 0;
 
   static List<Widget> _screenOptions = <Widget>[
-    PostDetailView(),
     HomeView(),
+    PostDetailView(),
     HomeView(),
     HomeView()
   ];

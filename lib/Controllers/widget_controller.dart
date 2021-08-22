@@ -30,20 +30,20 @@ class WidgetController {
           {String categories = "1,2,3,4,5,6,7,8,9",
           String regions = "1,2,3,4,5,6",
           String sort = "1",
-          String offset = "0",
-          String limit = "10"}) {
+            int page = 1
+          }) {
     var data = {
       "categories": categories,
       "regions": regions,
       "sort": sort,
-      "offset": offset,
-      "limit": limit
+      "page": page
     };
     return http
         .post(Uri.parse(homeViewPostsUrl),
             headers: headers, body: jsonEncode(data))
         .then((value) {
       if (value.statusCode == 200) {
+        print(value.body);
         final jsonData = json.decode(value.body);
         final items = <HomeViewPostWidgetModel>[];
         var users = <UserModel>[];
@@ -56,6 +56,7 @@ class WidgetController {
             artists.add(ArtistModel.fromJson(user));
           }
           items.add(HomeViewPostWidgetModel(
+              totalPage: item["total_page"],
               eventModel: EventModel.fromJson(item["event"]),
               categoryModel: CategoryModel.fromJson(item["category"]),
               placeModel: PlaceModel.fromJson(item["place"]),

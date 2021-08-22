@@ -48,24 +48,32 @@ class _PostDetailViewState extends State<PostDetailView> {
   }
 
   void callPostDetailViewPostModel() async{
-    setState(() {
-      isLoadingPostDetailViewPostModel=true;
-    });
+    if(mounted){
+      setState(() {
+        isLoadingPostDetailViewPostModel=true;
+      });
+    }
     // postDetailViewPostModel = await WidgetController.postDetailViewPost(eventId: widget.eventId);
     postDetailViewPostModel = await WidgetController.postDetailViewPostWidget(eventId: 4);
-    setState(() {
-      isLoadingPostDetailViewPostModel=false;
-    });
+    if(mounted){
+      setState(() {
+        isLoadingPostDetailViewPostModel=false;
+      });
+    }
   }
 
   void callPostDetailViewCarouselModel() async{
-    setState(() {
-      isLoadingPostDetailViewCarouselModel=true;
-    });
+    if(mounted){
+      setState(() {
+        isLoadingPostDetailViewCarouselModel=true;
+      });
+    }
     // postDetailViewCarouselModel = await WidgetController.postDetailViewCarouselWidgets(eventId: widget.eventId);
     postDetailViewCarouselModel = await WidgetController.postDetailViewCarouselWidgets(eventId: 4);
-    setState(() {
-      isLoadingPostDetailViewCarouselModel=false;
-    });
+    if(mounted){
+      setState(() {
+        isLoadingPostDetailViewCarouselModel=false;
+      });
+    }
   }
 }

@@ -7,6 +7,7 @@ import 'package:activitoo/Models/region_model.dart';
 import 'package:activitoo/Models/user_model.dart';
 
 class HomeViewPostWidgetModel {
+  late int totalPage;
   late EventModel eventModel;
   late CategoryModel categoryModel;
   late PlaceModel placeModel;
@@ -14,5 +15,5 @@ class HomeViewPostWidgetModel {
   late List<UserModel> users;
   late List<ArtistModel> artists;
 
-  HomeViewPostWidgetModel({required this.eventModel,required this.categoryModel,required this.placeModel,required this.regionModel,required this.users,required this.artists});
+  HomeViewPostWidgetModel({required this.totalPage,required this.eventModel,required this.categoryModel,required this.placeModel,required this.regionModel,required this.users,required this.artists});
 }
