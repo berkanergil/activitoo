@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "125342169320",
+    "project_id": "activitoo-130cf",
+    "storage_bucket": "activitoo-130cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125342169320:android:d55d121f1a06c4cf79315d",
+        "android_client_info": {
+          "package_name": "com.example.activitoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125342169320-monho4ngqu14m91fmp20pkiervk0052m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.activitoo",
+            "certificate_hash": "058250294f8e42388a455624ee63b8739a0eafae"
+          }
+        },
+        {
+          "client_id": "125342169320-kdbaij67cmqob1238s39op99mttiubat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa_QxmIv7hBvuPymlIqxeyM9R1Oi52KLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125342169320-kdbaij67cmqob1238s39op99mttiubat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

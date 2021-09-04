@@ -152,7 +152,7 @@ class _PostWidgetState extends State<PostWidget> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          widget.eventModel.startDateTime,
+                          widget.eventModel.startHour,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               fontSize: 20,
@@ -160,7 +160,7 @@ class _PostWidgetState extends State<PostWidget> {
                               color: Colors.white),
                         ),
                         Text(
-                          widget.eventModel.endDateTime,
+                          widget.eventModel.startDay,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               fontSize: 18,

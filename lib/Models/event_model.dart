@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class EventModel {
   late int id;
   late int placeId;
@@ -12,6 +14,10 @@ class EventModel {
   late String updatedAt;
   late int activeStatus;
   late String currency;
+  late String startHour;
+  late String endHour;
+  late String startDay;
+  late String endDay;
 
   EventModel(
       {required this.id,
@@ -26,7 +32,12 @@ class EventModel {
         required this.createdAt,
         required this.updatedAt,
         required this.activeStatus,
-        required this.currency});
+        required this.currency,
+        required this.startHour,
+        required this.endHour,
+        required this.startDay,
+        required this.endDay
+      });
 
   EventModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
@@ -42,7 +53,10 @@ class EventModel {
     updatedAt = json['updated_at']??"";
     activeStatus = json['active_status']??0;
     currency = json['currency']??"";
-
+    startHour = DateFormat("HH:mm").format(DateTime.parse(json['start_date_time'])).toString();
+    endHour = DateFormat("HH:mm").format(DateTime.parse(json['end_date_time'])).toString();
+    startDay =DateFormat("dd.MM.yy").format(DateTime.parse(json['start_date_time'])).toString();
+    endDay =DateFormat("dd.MM.yy").format(DateTime.parse(json['end_date_time'])).toString();
   }
 
   Map<String, dynamic> toJson() {

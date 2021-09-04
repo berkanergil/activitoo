@@ -1,15 +1,24 @@
 import 'package:activitoo/Constants/custom_colors.dart';
 import 'package:activitoo/Views/PostDetailView/post_detail_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'Views/HomeView/home_view.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_messageHandler);
   runApp(MyApp());
 }
 
+Future<void> _messageHandler(RemoteMessage message) async {
+  print('background message ${message.data["body"]}');
+
+}
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -66,6 +75,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int pageIndex = 0;
+  late FirebaseMessaging messaging;
 
   static List<Widget> _screenOptions = <Widget>[
     HomeView(),
@@ -73,6 +83,38 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeView(),
     HomeView()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    messaging = FirebaseMessaging.instance;
+    messaging.getToken().then((value){
+      print(value);
+    });
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(message.data["title"]),
+              content: Text(message.data["body"]),
+              actions: [
+                TextButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }
+    );
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print('Message clicked!');
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
