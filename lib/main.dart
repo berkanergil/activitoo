@@ -1,5 +1,6 @@
 import 'package:activitoo/Constants/custom_colors.dart';
 import 'package:activitoo/Views/PostDetailView/post_detail_view.dart';
+import 'package:activitoo/Views/SignInView/sign_in_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -50,13 +51,13 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'DENEME'),
+      home: MyHomePage(index: 0,),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key,required this.index}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -67,26 +68,27 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final int index;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int pageIndex = 0;
+  late int pageIndex;
   late FirebaseMessaging messaging;
 
   static List<Widget> _screenOptions = <Widget>[
     HomeView(),
     PostDetailView(),
-    HomeView(),
+    SignInView(),
     HomeView()
   ];
 
   @override
   void initState() {
     super.initState();
+    pageIndex=widget.index;
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value){
       print(value);
@@ -118,39 +120,37 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("ToDo"),
-        centerTitle: true,
-      ),
-      body: _screenOptions[pageIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'deneme',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: AppLocalizations.of(context)!.helloWorld,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Started',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Finished',
-          ),
-        ],
-        selectedItemColor: CustomColor.red,
-        currentIndex: pageIndex,
-        onTap: (index) {
-          setState(() {
-            pageIndex = index;
-          });
-        },
+    return SafeArea(
+      child: Scaffold(
+        body: _screenOptions[pageIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: AppLocalizations.of(context)!.helloWorld,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Sign In',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Finished',
+            ),
+          ],
+          selectedItemColor: CustomColor.red,
+          currentIndex: pageIndex,
+          onTap: (index) {
+            setState(() {
+              pageIndex = index;
+            });
+          },
+        ),
       ),
     );
   }
